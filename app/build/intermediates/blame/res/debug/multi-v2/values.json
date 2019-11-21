@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dong/AndroidStudioProjects/Spare/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/dong/Dev/009.spare_project/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/home/dong/.gradle/caches/transforms-2/files-2.1/906744c4ddcbc384c5a8d2d69414f8fa/appcompat-1.0.2/res/values/values.xml",
@@ -23,20 +23,20 @@
                     }
                 },
                 {
-                    "source": "/home/dong/AndroidStudioProjects/Spare/app/src/main/res/values/strings.xml",
+                    "source": "/home/dong/Dev/009.spare_project/app/src/main/res/values/colors.xml",
                     "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "42",
-                        "endOffsets": "54"
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "153,55,102",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "194,97,148"
                     },
                     "to": {
-                        "startLines": "377",
-                        "startColumns": "4",
-                        "startOffsets": "22533",
-                        "endColumns": "42",
-                        "endOffsets": "22571"
+                        "startLines": "153,154,155",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "7704,7750,7797",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "7745,7792,7843"
                     }
                 },
                 {
@@ -59,42 +59,6 @@
                     }
                 },
                 {
-                    "source": "/home/dong/AndroidStudioProjects/Spare/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "153,55,102",
-                        "endColumns": "45,46,50",
-                        "endOffsets": "194,97,148"
-                    },
-                    "to": {
-                        "startLines": "153,154,155",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "7704,7750,7797",
-                        "endColumns": "45,46,50",
-                        "endOffsets": "7745,7792,7843"
-                    }
-                },
-                {
-                    "source": "/home/dong/AndroidStudioProjects/Spare/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "8",
-                        "endColumns": "12",
-                        "endOffsets": "368"
-                    },
-                    "to": {
-                        "startLines": "385",
-                        "startColumns": "4",
-                        "startOffsets": "23142",
-                        "endLines": "390",
-                        "endColumns": "12",
-                        "endOffsets": "23456"
-                    }
-                },
-                {
                     "source": "/home/dong/.gradle/caches/transforms-2/files-2.1/3b95216347b91b0d0d6d33ef33ac3197/coordinatorlayout-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,102,3,13",
@@ -111,6 +75,42 @@
                         "endLines": "15,1851,2558,2647",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "720,122448,166385,171596"
+                    }
+                },
+                {
+                    "source": "/home/dong/Dev/009.spare_project/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "42",
+                        "endOffsets": "54"
+                    },
+                    "to": {
+                        "startLines": "377",
+                        "startColumns": "4",
+                        "startOffsets": "22533",
+                        "endColumns": "42",
+                        "endOffsets": "22571"
+                    }
+                },
+                {
+                    "source": "/home/dong/Dev/009.spare_project/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "368"
+                    },
+                    "to": {
+                        "startLines": "385",
+                        "startColumns": "4",
+                        "startOffsets": "23142",
+                        "endLines": "390",
+                        "endColumns": "12",
+                        "endOffsets": "23456"
                     }
                 },
                 {
