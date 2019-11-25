@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Spare</string>
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">480611772575499</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb480611772575499</string>
+    <string name="loading">Loading…</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Club</string>
+    <string name="title_chatting">Chat</string>
+    <string name="title_board">Board</string>
+    <string name="title_avg">Average</string>
+    <string name="title_setting">Setting</string>
 </resources>
+
