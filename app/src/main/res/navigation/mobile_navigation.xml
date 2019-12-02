@@ -7,19 +7,33 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.gm180.spare.ui.home.HomeFragment"
+        android:name="com.gm180.spare.ui.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/home_fragment" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.gm180.spare.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_chatting"
+        android:name="com.gm180.spare.ui.fragment.ChattingFragment"
+        android:label="@string/title_chatting"
+        tools:layout="@layout/chatting_fragment" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.gm180.spare.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_board"
+        android:name="com.gm180.spare.ui.fragment.BoardFragment"
+        android:label="@string/title_board"
+        tools:layout="@layout/board_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_average"
+        android:name="com.gm180.spare.ui.fragment.AvgFragment"
+        android:label="@string/title_avg"
+        tools:layout="@layout/avg_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.gm180.spare.ui.fragment.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/setting_fragment" />
+
+
 </navigation>

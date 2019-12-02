@@ -7,10 +7,13 @@
     <string name="signed_out">Signed Out</string>
     <string name="sign_out">Sign Out</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Club</string>
-    <string name="title_chatting">Chat</string>
+    <string name="title_home">Home</string>
+    <string name="title_chatting">Chatting</string>
     <string name="title_board">Board</string>
     <string name="title_avg">Average</string>
     <string name="title_setting">Setting</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
