@@ -34,6 +34,7 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
     private static final String TAG = "StartActivity";
 
     private static final int RC_SIGN_UP = 9002;
+    private static final int RESULT_OK = 1;
 
     private FirebaseAuth mAuth;
 
@@ -89,12 +90,6 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
         updateUI(currentUser);
         Log.d(TAG, "on start success!!!!!!!!!!!!!!!!");
 
-        if (currentUser != null) {
-            goHomeIntent();
-        } else {
-            // No user is signed in
-        }
-
 
     }
     // [END on_start_check_user]
@@ -105,7 +100,7 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
         if (i == R.id.signUpButton) {
             Intent intent = new Intent(this, SignUpActivity.class);
             Log.d(TAG, "sign out clicked !!!!!!!!!!!!!!!!");
-            startActivityForResult(intent,RC_SIGN_UP);
+                startActivityForResult(intent,RC_SIGN_UP);
         }/* else if (i == R.id.signInButton) {
             Log.d(TAG, "sign in clicked !!!!!!!!!!!!!!!!");
             //signIn();
@@ -118,7 +113,11 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
+        if (resultCode == RESULT_OK) {
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            updateUI(currentUser);
+            Log.d(TAG, "on start success!!!!!!!!!!!!!!!!");
+        }
 
 
         /** 구글 로그인 구현할 때 쓴 것
@@ -206,11 +205,9 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            //findViewById(R.id.signInButton).setVisibility(View.GONE);
-            //findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);
+            goHomeIntent();
         } else {
-            //findViewById(R.id.signInButton).setVisibility(View.VISIBLE);
-            //findViewById(R.id.signOutAndDisconnect).setVisibility(View.GONE);
+
         }
     }
 
