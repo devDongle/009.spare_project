@@ -1293,6 +1293,7 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id bt_certify
+id bt_signIn
 id bt_signOut
 id bt_signUpComplete
 id btn_holder
@@ -1492,6 +1493,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signIn_email
+id signIn_pwd
 id signUpButton
 id sign_in_email_sent_header_text
 id sign_in_email_sent_text
@@ -1525,6 +1528,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView1
+id textView10
 id textView2
 id textView3
 id textView4
@@ -1532,6 +1536,7 @@ id textView5
 id textView6
 id textView7
 id textView8
+id textView9
 id text_input_password_toggle
 id textinput_counter
 id textinput_error

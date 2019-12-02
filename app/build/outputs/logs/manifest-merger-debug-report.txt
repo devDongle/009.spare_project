@@ -17,6 +17,7 @@ MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/dong/.gradl
 MERGED from [androidx.navigation:navigation-fragment:2.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ef75f0c5db1f68e8851e32ef331e635e/navigation-fragment-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/6b2f434ea0245398fb53041014759df4/lifecycle-extensions-2.0.0/AndroidManifest.xml:17:1-25:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/2faf2431b7f9b251d3aec3ec352942b4/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-core:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/b4176b9940431a6008fad9885aa8d710/firebase-core-17.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ebad1af8cdb5e7581a2018b32cfb23db/firebase-analytics-17.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:19.1.0] /home/dong/.gradle/caches/transforms-2/files-2.1/036bb3063c7e1212eb5a1f4aef58cca9/firebase-auth-19.1.0/AndroidManifest.xml:17:1-42:12
 MERGED from [com.google.android.gms:play-services-auth:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/f93910dcc4bbfd964f949e2ecee79f63/play-services-auth-17.0.0/AndroidManifest.xml:17:1-39:12
@@ -116,6 +117,8 @@ MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/dong/.gradl
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/dong/.gradle/caches/transforms-2/files-2.1/9094f338ba92479808ec41e819f57533/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/6b2f434ea0245398fb53041014759df4/lifecycle-extensions-2.0.0/AndroidManifest.xml:22:5-23:19
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/6b2f434ea0245398fb53041014759df4/lifecycle-extensions-2.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-core:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/b4176b9940431a6008fad9885aa8d710/firebase-core-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/b4176b9940431a6008fad9885aa8d710/firebase-core-17.0.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ebad1af8cdb5e7581a2018b32cfb23db/firebase-analytics-17.2.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ebad1af8cdb5e7581a2018b32cfb23db/firebase-analytics-17.2.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-auth:19.1.0] /home/dong/.gradle/caches/transforms-2/files-2.1/036bb3063c7e1212eb5a1f4aef58cca9/firebase-auth-19.1.0/AndroidManifest.xml:23:5-40:19
@@ -238,6 +241,8 @@ MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] /home/dong/.gradle/c
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/6b2f434ea0245398fb53041014759df4/lifecycle-extensions-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/2faf2431b7f9b251d3aec3ec352942b4/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/2faf2431b7f9b251d3aec3ec352942b4/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/b4176b9940431a6008fad9885aa8d710/firebase-core-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:17.0.0] /home/dong/.gradle/caches/transforms-2/files-2.1/b4176b9940431a6008fad9885aa8d710/firebase-core-17.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ebad1af8cdb5e7581a2018b32cfb23db/firebase-analytics-17.2.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.2.0] /home/dong/.gradle/caches/transforms-2/files-2.1/ebad1af8cdb5e7581a2018b32cfb23db/firebase-analytics-17.2.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:19.1.0] /home/dong/.gradle/caches/transforms-2/files-2.1/036bb3063c7e1212eb5a1f4aef58cca9/firebase-auth-19.1.0/AndroidManifest.xml:21:5-44

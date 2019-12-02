@@ -6,9 +6,11 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.google.android.gms.common.api.ApiException;
@@ -32,9 +34,11 @@ import java.io.Serializable;
 public class StartActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "StartActivity";
-
     private static final int RC_SIGN_UP = 9002;
     private static final int RESULT_OK = 1;
+
+    private EditText et_Email;
+    private EditText et_Pwd;
 
     private FirebaseAuth mAuth;
 
@@ -55,14 +59,18 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        // Button listeners
+        // View
+        et_Email = findViewById(R.id.signIn_email);
+        et_Pwd = findViewById(R.id.signIn_pwd);
 
+        // Button listeners
         findViewById(R.id.signUpButton).setOnClickListener(this);
+        findViewById(R.id. bt_signIn).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
 
-
+        Log.d(TAG, "complete onCreate!!!");
         /** 구글 로그인 구현 할 때 쓰는
         findViewById(R.id.signInButton).setOnClickListener(this);
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -88,24 +96,11 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-        Log.d(TAG, "on start success!!!!!!!!!!!!!!!!");
+        Log.d(TAG, "Complete onStart!!!");
 
 
     }
     // [END on_start_check_user]
-
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.signUpButton) {
-            Intent intent = new Intent(this, SignUpActivity.class);
-            Log.d(TAG, "sign out clicked !!!!!!!!!!!!!!!!");
-                startActivityForResult(intent,RC_SIGN_UP);
-        }/* else if (i == R.id.signInButton) {
-            Log.d(TAG, "sign in clicked !!!!!!!!!!!!!!!!");
-            //signIn();
-        }*/
-    }
 
 
     // [START onactivityresult]
@@ -175,31 +170,68 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
     // [END auth_with_google]**/
 
 
-    /**구글 로그인 구현 할 때 쓴 것
+
     // [START signin]
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();  // 구글 로그인 연동 인텐트(즉, 구글 로그인 페이지)
-        startActivityForResult(signInIntent, RC_SIGN_IN);             // 실행
-    }
-    // [END signin]
-     **/
-
-    /** 구글 로그아웃 구현할 때 쓴 것
-    private void signOut() {
-        // Firebase sign out
-        mAuth.signOut();
-
-        // Google sign out
-        mGoogleSignInClient.signOut().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
+    private void signIn(String email, String password) {
+        Log.d(TAG, "Sign In start!!!");
+        if (!validateForm()) {
+            return;
+        }
+        showProgressDialog();
+        // [START sign_in_with_email]
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        updateUI(null);
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "로그인에 실패 했습니다! 다시 확인해주세요.", task.getException());
+                            Toast.makeText(StartActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+
+                        hideProgressDialog();
+                        // [END_EXCLUDE]
                     }
                 });
-        Log.d(TAG, "Google sign out success !!!!!!!!!!!!!!!!");
+        // [END sign_in_with_email]
+
+        /**
+        //구글 로그인 구현 할 때 쓴 것
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();  // 구글 로그인 연동 인텐트(즉, 구글 로그인 페이지)
+        startActivityForResult(signInIntent, RC_SIGN_IN);             // 실행
+        **/
     }
-     **/
+    // [END signin]
+
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = et_Email.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            et_Email.setError("Required.");
+            valid = false;
+        } else {
+            et_Email.setError(null);
+        }
+
+        String password = et_Pwd.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            et_Pwd.setError("Required.");
+            valid = false;
+        } else {
+            et_Pwd.setError(null);
+        }
+
+        return valid;
+    }
 
 
     private void updateUI(FirebaseUser user) {
@@ -217,6 +249,18 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
         finish();
     }
 
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.signUpButton) {
+            Intent intent = new Intent(this, SignUpActivity.class);
+            Log.d(TAG, "Sign Up clicked!!!");
+            startActivityForResult(intent,RC_SIGN_UP);
+        } else if (i == R.id.bt_signIn) {
+            Log.d(TAG, "Sign In clicked!!!");
+            signIn(et_Email.getText().toString(),et_Pwd.getText().toString());
+        }
+    }
 
 
 }

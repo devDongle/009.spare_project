@@ -46,6 +46,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         //Button
         findViewById(R.id.bt_signUpComplete).setOnClickListener(this);
         findViewById(R.id.bt_certify).setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private void createAccount(String email, String password, String birthday, String name, String phonenumber, String pwdchk) {
@@ -56,7 +58,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         }
 
         showProgressDialog();
-
+        Log.d(TAG, "Start createUserWithEmailAndPassword!!!");
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -158,6 +160,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bt_signUpComplete) {
+            Log.d(TAG, "bt_signUpComplete clicked!!!");
+
             String mEmail = et_Email.getText().toString();
             String mPassword = et_Password.getText().toString();
             String mBirthday = et_Birthday.getText().toString();

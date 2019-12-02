@@ -47,7 +47,7 @@ public class HomeActivity extends BaseActivity  {
 
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
 
     FirebaseFirestore db;
@@ -69,10 +69,14 @@ public class HomeActivity extends BaseActivity  {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+
         db = FirebaseFirestore.getInstance();
 
         //login confirm start
-        user = FirebaseAuth.getInstance().getCurrentUser();
+
 
 
         if (user != null) {
@@ -92,7 +96,7 @@ public class HomeActivity extends BaseActivity  {
                 Log.d(TAG, "Name!!!!!!!!!!!!!!!!"+name);
                 Log.d(TAG, "email!!!!!!!!!!!!!!!!"+email);
                 Log.d(TAG,"phone"+phonnNum);
-                addUser(name, email);
+                //addUser(name, email);
             }
         }
         //login confirm end
@@ -103,7 +107,6 @@ public class HomeActivity extends BaseActivity  {
                 .build();
 
 
-        firebaseAuth = FirebaseAuth.getInstance();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
@@ -120,6 +123,11 @@ public class HomeActivity extends BaseActivity  {
 
 
     public void signOut() {
+        mAuth.signOut();
+        Intent intent = new Intent(HomeActivity.this, StartActivity.class);
+        startActivity(intent);
+        finish();
+        /** 타 액티비티에서 구글 로그아웃에 사
         showProgressDialog();
         mGoogleApiClient.connect();
         mGoogleApiClient.registerConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
@@ -161,7 +169,7 @@ public class HomeActivity extends BaseActivity  {
                 //hideProgressDialog();
                 //finish();
             }
-        });
+        });**/
 
     }
 
@@ -178,7 +186,7 @@ public class HomeActivity extends BaseActivity  {
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                Toast.makeText(getApplicationContext(), "취소 되었습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "취소 되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
