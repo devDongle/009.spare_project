@@ -202,11 +202,7 @@ public class StartActivity extends BaseActivity implements View.OnClickListener 
                 });
         // [END sign_in_with_email]
 
-        /**
-        //구글 로그인 구현 할 때 쓴 것
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();  // 구글 로그인 연동 인텐트(즉, 구글 로그인 페이지)
-        startActivityForResult(signInIntent, RC_SIGN_IN);             // 실행
-        **/
+
     }
     // [END signin]
 

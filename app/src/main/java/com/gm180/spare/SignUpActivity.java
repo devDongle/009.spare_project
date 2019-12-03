@@ -11,10 +11,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
@@ -28,6 +39,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private EditText et_Name;
 
     private FirebaseAuth mAuth;
+    FirebaseFirestore mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.bt_certify).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        mDb = FirebaseFirestore.getInstance();
     }
 
     private void createAccount(String email, String password, String birthday, String name, String phonenumber, String pwdchk) {
@@ -57,8 +70,22 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             return;
         }
 
-        showProgressDialog();
+
+        // CurrentTime save
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yy.MM.dd HH:mm:ss");
+        String formatDate = sdfNow.format(date);
+
+        // Create user map
+        final Map<String, Object> user = new HashMap<>();
+        user.put("Email", email);
+        user.put("Password", password);
+        user.put("Name",name);
+        user.put("Birthday", birthday);
+        user.put("Phone", phonenumber);
+        user.put("SignUpDate", formatDate);
         Log.d(TAG, "Start createUserWithEmailAndPassword!!!");
+
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -67,11 +94,15 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            /*
-                            DATABASE 등록과정필요
-                             */
-                            updateUI(user);
+                            FirebaseUser mUser = mAuth.getCurrentUser();
+
+                            // Create a new user with a first and last name
+                            showProgressDialog();
+
+                            // Register User
+                            addUser(user);
+
+                            updateUI(mUser);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -146,6 +177,34 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         return valid;
     }
 
+    private void addUser(Map<String, Object> user) {
+
+        // Add a new document with a generated ID
+        mDb.collection("Users").document(user.get("Email").toString())
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+
+                    /* 익명 아이디 시 new OnSuccessListenet<DocumentReference> 로 바꿔준다
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                    */
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+        // [END add_ada_lovelace]
+    }
+
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
@@ -171,10 +230,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             createAccount(mEmail, mPassword, mBirthday,mName, mPhoneNum, mPwdchk);
 
 
-
-
         } else if(view.getId() == R.id.bt_certify) {
-
+            // 휴대폰 인증 구현 필요요
         }
     }
 }

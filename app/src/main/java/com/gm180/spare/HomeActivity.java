@@ -43,16 +43,20 @@ public class HomeActivity extends BaseActivity  {
 
     private static final String TAG = "HomeActivity";
 
-    FirebaseUser user;
 
+
+    private FirebaseAuth mAuth;
+    FirebaseUser mUser;
+
+
+
+
+    /** 구글 버젼
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
-    private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
-
-    FirebaseFirestore db;
-
-
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +74,15 @@ public class HomeActivity extends BaseActivity  {
         NavigationUI.setupWithNavController(navView, navController);
 
         mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
+        mUser = mAuth.getCurrentUser();
 
-
-        db = FirebaseFirestore.getInstance();
 
         //login confirm start
 
 
 
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
+        if (mUser != null) {
+            for (UserInfo profile : mUser.getProviderData()) {
                 // Id of the provider (ex: google.com)
                 String providerId = profile.getProviderId();
                 String phonnNum = profile.getPhoneNumber();
@@ -101,12 +103,12 @@ public class HomeActivity extends BaseActivity  {
         }
         //login confirm end
 
+
+        /** 구글 버전
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
-
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
@@ -117,7 +119,7 @@ public class HomeActivity extends BaseActivity  {
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
+       **/
 
     }
 
@@ -127,6 +129,8 @@ public class HomeActivity extends BaseActivity  {
         Intent intent = new Intent(HomeActivity.this, StartActivity.class);
         startActivity(intent);
         finish();
+
+
         /** 타 액티비티에서 구글 로그아웃에 사
         showProgressDialog();
         mGoogleApiClient.connect();
@@ -194,29 +198,6 @@ public class HomeActivity extends BaseActivity  {
         alertDialog.show();
     }
 
-    public void addUser(String name, String email) {
-        // [START add_ada_lovelace]
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("name", name);
-        user.put("email", email);
 
-        // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-        // [END add_ada_lovelace]
-    }
 
 }
